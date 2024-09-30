@@ -29,4 +29,47 @@ Before running the project, make sure you have the following installed:
 - [Git](https://git-scm.com/)
 
 ## Project Structure
+├── Data/
+│   ├── data.py               # Contains functions to interact with the database (GET, POST)
+│   └── Dockerfile            # Dockerfile to build the Data microservice container
+├── Getserver/
+│   ├── get_server.py         # Flask server to handle GET requests, communicates with Data microservice
+│   └── Dockerfile            # Dockerfile to build the Getserver microservice container
+├── Postserver/
+│   ├── post_server.py        # Flask server to handle POST requests, communicates with Data microservice
+│   └── Dockerfile            # Dockerfile to build the Postserver microservice container
+├── database.py               # SQLAlchemy models and database connection setup
+├── shared.db                 # SQLite database file (automatically created if not present)
+├── requirements.txt          # Contains Python package dependencies required for the microservices
+├── docker-compose.yml        # Docker Compose file to orchestrate the containers for each microservice
+├── .gitignore                # Specifies files and directories to be ignored by git (e.g., shared.db)
+└── README.md                 # Documentation file with instructions on setting up and running the project
 
+
+## How to Run
+
+Follow these steps to set up and run the microservices:
+
+### 1. Clone the repository
+
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+
+### 2. Build and Run the Containers
+docker-compose up --build
+
+### 3. API Endpoints
+GET http://localhost:5000/
+POST curl http://localhost:5001/
+
+### 4. Stop the Services
+docker-compose down
+
+### 5. Cleaning Up
+docker-compose down --rmi all --volumes --remove-orphans
+
+
+### Troubleshooting
+Connection Issues: Ensure that the services are running, and the ports (5000, 5001, and 5002) are not being used by any other processes.
+Database Issues: If there's an issue with the database, delete shared.db and restart the services. The database will be recreated.
