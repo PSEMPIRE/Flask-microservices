@@ -1,0 +1,28 @@
+services:
+  getserver:
+    build:
+      context: .
+      dockerfile: Getserver/Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - dataserver
+
+  postserver:
+    build:
+      context: .
+      dockerfile: Postserver/Dockerfile
+    ports:
+      - "5001:5001"
+    depends_on:
+      - dataserver
+
+  dataserver:
+    build:
+      context: .
+      dockerfile: Data/Dockerfile
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./shared.db:/app/shared.db
+      - ./database.py:/app/database.py
