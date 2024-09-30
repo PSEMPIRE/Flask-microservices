@@ -1,0 +1,20 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+env/
+
+# Database files
+*.db
+
+
+
+# Ignore docker-compose config if you want (optional)
+docker-compose.yml
+
+# Log files
+*.log
+
+# Flask secret key and environment files (if present)
+*.env
