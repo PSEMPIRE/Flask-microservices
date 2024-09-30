@@ -8,11 +8,6 @@ env/
 # Database files
 *.db
 
-
-
-# Ignore docker-compose config if you want (optional)
-docker-compose.yml
-
 # Log files
 *.log
 
